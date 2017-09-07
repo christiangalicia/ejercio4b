@@ -10,6 +10,9 @@ package vista;
  * @author christian
  */
 public class vista {
+
+    public vista() {
+    }
     
     
 }
