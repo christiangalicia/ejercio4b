@@ -27,9 +27,9 @@ public class Autobus {
             capacidad[i]=false;
         }
     }
-    public boolean cancelarAsiento(int a){
-        if( capacidad[a]==true){
-            capacidad[a]=false;
+    public boolean cancelarAsiento(int b){
+        if( capacidad[b]==true){
+            capacidad[b]=false;
             return true;
         }
         return false;
