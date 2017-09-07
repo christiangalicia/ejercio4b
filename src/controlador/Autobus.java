@@ -69,7 +69,7 @@ public class Autobus {
         return clave;
     }
 
-    public Conductor getConductor() {
+    public Conductor getChofer() {
         return conductor;
     }
 
