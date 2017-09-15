@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controlador;
-
+import modelo.*;
 /**
  *
  * @author christian
@@ -12,12 +12,12 @@ package controlador;
 public class Terminal {
     private String nombre;
     private String ubicacion;
-    private Autobus[] autobus;
+    private MAutobus mautobus;
 
-    public Terminal(String nombre, String ubicacion, Autobus[] autobus) {
+    public Terminal(String nombre, String ubicacion) {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
-        this.autobus = autobus;
+        mautobus = new MAutobus();
     }
 
     public String getNombre() {
@@ -29,7 +29,20 @@ public class Terminal {
     }
 
     public Autobus[] getAutobus() {
-        return autobus;
+        return null;
+    }
+    public void crearRuta(int capacidad, String tipo, int clave,
+                        String nombreConducto, int claveConducto,
+                          String horario, int costo, String nombreDestino){
+        
+        Autobus a = new Autobus(capacidad, tipo, clave);
+        Conductor c = new Conductor(nombreConducto, claveConducto);
+        Destino d = new Destino(horario, costo, nombreDestino);
+        a.setConductor(c);
+        a.setDestino(d);
+        mautobus.guardarRuta(a);
+        
+        
     }
     
     

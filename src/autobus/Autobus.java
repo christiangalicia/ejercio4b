@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package autobus;
-
+import controlador.Terminal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.BD;
+import  vista.*;
 /**
  *
  * @author christian
@@ -15,7 +21,9 @@ public class Autobus {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+      vista v = new vista();
+      
     }
     
 }
