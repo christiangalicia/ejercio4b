@@ -7,6 +7,7 @@ package modelo;
 import controlador.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -39,6 +40,21 @@ public class MAutobus  extends BD{
         int idAutobus= this.obtenerUltimoID("autobus", "idAutobus");
         for (int i = 1; i <= a.getCapacidad(); i++) {
             this.insertar("capacidad", "asiento,estado,idAutobus", "'"+i+"','0','"+idAutobus+"'");
+        }
+    }
+    public ArrayList<Autobus> mostrarRutas(){
+        try {
+            ArrayList<Autobus> ado = new ArrayList<>();
+            ResultSet r= this.consultar("select *, COUNT(capacidad.idAutobus) as totalasientos from rutas inner join autobus on autobus.idRuta= rutas.idRuta inner join conductor on conductor.idConductor = autobus.idConductor inner join capacidad on capacidad.idAutobus= autobus.idAutobus group by capacidad.idAutobus");
+            while(r.next()){
+               Autobus a= new Autobus(r.getInt("totalasientos"), r.getString("tipo"), r.getInt("clave"));
+               a.setConductor(new Conductor(r.getString("nombre"), r.getInt(12)));
+                ado.add(a) ;
+            }
+            return ado;
+        } catch (SQLException ex) {
+            Logger.getLogger(MAutobus.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
     }
     

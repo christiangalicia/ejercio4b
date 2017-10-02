@@ -5,8 +5,14 @@
  */
 package vista;
 
-import controlador.Terminal;
+
+import controlador.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +54,14 @@ public class vista {
                 t.crearRuta(capacidad, tipo, clave, nombreConductor, claveConductor, horario, costo, nombreDestino);
                 
             }else if(opcion==4){
+               
+                    ArrayList<Autobus> r= t.consultarRutas();
+                    for (int i = 0; i < r.size(); i++) {
+                       Autobus a= r.get(i);
+                        System.out.println(a.getClave());
+                        System.out.println("Capacidad = "+a.getCapacidad());
+                        System.out.println("Conductor="+a.getChofer().getNombre());
+                    }
                 
             }else if(opcion==5){
                 

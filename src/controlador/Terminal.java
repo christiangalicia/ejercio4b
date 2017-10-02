@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package controlador;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import modelo.*;
 /**
  *
@@ -43,6 +45,9 @@ public class Terminal {
         mautobus.guardarRuta(a);
         
         
+    }
+    public ArrayList<Autobus> consultarRutas(){
+        return this.mautobus.mostrarRutas();
     }
     
     
