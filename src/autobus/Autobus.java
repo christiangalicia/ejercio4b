@@ -22,7 +22,8 @@ public class Autobus {
      */
     public static void main(String[] args) {
        
-      vista v = new vista();
+      VistaGrafica v = new VistaGrafica();
+      v.setVisible(true);
       
     }
     

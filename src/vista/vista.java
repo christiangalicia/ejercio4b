@@ -31,6 +31,11 @@ public class vista {
             System.out.println("5.-Reportes");
             int opcion= leer.nextInt();
             if(opcion==1){
+                System.out.println("Ingresa la clave");
+                int clave= leer.nextInt();
+                System.out.println("Ingresa el numero del asiento");
+                int numero= leer.nextInt();
+                System.out.println( t.reservarAsiento(clave, numero));
                 
             }else if (opcion==2){
                 
@@ -61,6 +66,14 @@ public class vista {
                         System.out.println(a.getClave());
                         System.out.println("Capacidad = "+a.getCapacidad());
                         System.out.println("Conductor="+a.getChofer().getNombre());
+                            System.out.println("Destino="+a.getDestino().getNombreDestino());
+                         System.out.println("Costo="+a.getDestino().getCosto());
+                        System.out.println("Horario="+a.getDestino().getHorario());
+                            System.out.println("------------------------------\n");
+                    
+                    
+                    
+                    
                     }
                 
             }else if(opcion==5){

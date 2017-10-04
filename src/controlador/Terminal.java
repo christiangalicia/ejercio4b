@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package controlador;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.*;
+
 /**
  *
  * @author christian
  */
 public class Terminal {
+
     private String nombre;
     private String ubicacion;
     private MAutobus mautobus;
@@ -33,22 +36,34 @@ public class Terminal {
     public Autobus[] getAutobus() {
         return null;
     }
+
     public void crearRuta(int capacidad, String tipo, int clave,
-                        String nombreConducto, int claveConducto,
-                          String horario, int costo, String nombreDestino){
-        
+            String nombreConducto, int claveConducto,
+            String horario, int costo, String nombreDestino) {
+
         Autobus a = new Autobus(capacidad, tipo, clave);
         Conductor c = new Conductor(nombreConducto, claveConducto);
         Destino d = new Destino(horario, costo, nombreDestino);
         a.setConductor(c);
         a.setDestino(d);
         mautobus.guardarRuta(a);
-        
-        
+
     }
-    public ArrayList<Autobus> consultarRutas(){
+
+    public ArrayList<Autobus> consultarRutas() {
         return this.mautobus.mostrarRutas();
     }
-    
-    
+
+    public String reservarAsiento(int clave, int numero) {
+        int num= this.mautobus.buscarAsiento(clave, numero);
+        if(num==0){
+            this.mautobus.reservarAsiento(clave, numero);
+            return "Asiento Reservado";
+        }else if(num==1){
+            return "Asiento Ocupado";
+        }else{
+            return "El asiento no existe";
+        }
+    }
+
 }

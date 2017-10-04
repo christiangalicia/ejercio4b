@@ -40,6 +40,14 @@ public class BD {
             return null;
         }
     }
+    protected void modificar(String tabla, String campos, String condicion){
+        try {
+            pst = con.createStatement();
+            pst.executeUpdate("update "+tabla+ " set "+campos+ " where "+condicion);
+        } catch (SQLException ex) {
+            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     protected void insertar(String tabla, String campos, String valores){
         try {
